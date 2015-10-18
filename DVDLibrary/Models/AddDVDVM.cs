@@ -9,19 +9,29 @@ namespace DVDLibrary.Models
 {
     public class AddDVDVM
     {
-        public DVD Dvd { get; set; }
-        public string StudioDescription { get; set; }
-
-        // this may need to ba a string instead of a list
+        public DVD DvdToAdd { get; set; }
+        
         public List<SelectListItem> StudioNameSelectList { get; set; }
+        public int StudioSelectedValue { get; set; }
 
-        public List<Studio> StudioList { get; set; }
+        public List<SelectListItem> MPAASelectList { get; set; }
+        public string MPAASelectedValue { get; set; }
+
+        public List<SelectListItem> ActorSelectList { get; set; }
+        public List<int> ActorSelectedValues { get; set; }
+
+        public AddDVDVM()
+        {
+            DvdToAdd = new DVD();
+            StudioNameSelectList = new List<SelectListItem>();
+            MPAASelectList = new List<SelectListItem>();
+            ActorSelectList = new List<SelectListItem>();
+            ActorSelectedValues = new List<int>();
+        }
 
         public void CreateStudioList(List<Studio> studios)
         {
             StudioNameSelectList = new List<SelectListItem>();
-
-            List<Studio> newStudios = studios.GroupBy(s => s.StudioName).Select(s => s.FirstOrDefault()).ToList();
 
             foreach (var studio in newStudios)
             {
@@ -35,16 +45,10 @@ namespace DVDLibrary.Models
             }
         }
 
-        // this may need to ba a string instead of a list
-        public List<SelectListItem> MPAASelectList { get; set; }
-
-        public List<MPAA> MPAAList { get; set; }
-
+       
         public void CreateMPAAList(List<MPAA> mpaas)
         {
             MPAASelectList = new List<SelectListItem>();
-
-            List<MPAA> newMPAAs = mpaas.GroupBy(m => m.MPAARating).Select(m => m.FirstOrDefault()).ToList();
 
             foreach (var mpaa in newMPAAs)
             {
@@ -59,19 +63,11 @@ namespace DVDLibrary.Models
         }
 
         // This should be a ListBox on the View, so the user can select multiple Actors.
-
-        // this may need to ba a string instead of a list
-        public List<SelectListItem> ActorSelectList { get; set; }
-
-        public List<Actor> ActorList { get; set; }
-
         public void CreateActorList(List<Actor> mpaas)
         {
             MPAASelectList = new List<SelectListItem>();
 
-            List<Actor> newActors = mpaas.GroupBy(a => a.ActorName).Select(a => a.FirstOrDefault()).ToList();
-
-            foreach (var actor in newActors)
+           foreach (var actor in newActors)
             {
                 ActorSelectList.Add(
                     new SelectListItem

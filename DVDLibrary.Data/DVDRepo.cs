@@ -24,7 +24,7 @@ namespace DVDLibrary.Data
             
         }
 
-        public void AddDVD(DVD dvd)
+        public int AddDVD(DVD dvd)
         {
             
         }
