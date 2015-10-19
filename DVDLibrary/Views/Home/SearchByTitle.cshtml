@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "SearchByTitle";
+}
+
+<h2>SearchByTitle</h2>
+
+@using (Html.BeginForm("ListDVDsByTitle", "Home", FormMethod.Post))
+{
+    <p>
+        <label>Search by DVD Title</label>
+        <input type="text" id="title" name="title" />
+    </p>
+        <button>Submit</button>
+}
+

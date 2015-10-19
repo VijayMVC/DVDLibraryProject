@@ -28,7 +28,8 @@ namespace DVDLibrary.Data
             {
                 var d = new DynamicParameters();
                 d.Add("DVDTitle", title);
-                results = cn.Query<DVD>("SELECT * FROM DVDs WHERE Title LIKE '%' + @DVDTitle + '%'", d).ToList();
+                d.Add("InCollection", 1);
+                results = cn.Query<DVD>("SELECT * FROM DVDs WHERE Title LIKE '%' + @DVDTitle + '%' AND IsInCollection = @InCollection", d).ToList();
             }
             return results;
         }

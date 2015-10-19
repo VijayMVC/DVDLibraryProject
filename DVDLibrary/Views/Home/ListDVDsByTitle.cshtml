@@ -1,0 +1,44 @@
+﻿@model IEnumerable<DVDLibrary.Models.DVD>
+
+@{
+    ViewBag.Title = "ListDVDsByTitle";
+}
+
+<h2>ListDVDsByTitle</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MPAA)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReleaseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MPAA)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DVDId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DVDId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DVDId })
+        </td>
+    </tr>
+}
+
+</table>
+
+@Html.ActionLink("Add a DVD", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+@Html.ActionLink("View all DVDs", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })

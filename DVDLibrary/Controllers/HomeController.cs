@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.Mvc;
+using DVDLibrary.Data;
 using DVDLibrary.Models;
 using Microsoft.SqlServer.Server;
 
@@ -34,7 +35,23 @@ namespace DVDLibrary.Controllers
             return View();
         }
 
-        public ActionResult GetDVDByTitle(string title)
+        [HttpPost]
+        public ActionResult ListDVDsByTitle(string title)
+        {
+            var repo = new DVDRepo();
+
+            var results = repo.GetDVDByTitle(title);
+
+            if (title == String.Empty)
+            {
+                return View("NoResults");
+            }
+            //redirect to List DVDs View
+            return View(results);
+        }
+
+
+        public ActionResult SearchByTitle()
         {
             //redirect to List DVDs View
             return View();
