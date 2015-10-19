@@ -20,7 +20,7 @@ namespace DVDLibrary.Data
             return null;
         }
 
-        public DVD GetDVDByTitle(string title)
+        public List<DVD> GetDVDByTitle(string title)
         {
             var results = new List<DVD>();
 

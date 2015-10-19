@@ -85,8 +85,8 @@ namespace DVDLibrary.Tests
 
             var result = repo.GetDVDByTitle(title);
 
-            Assert.AreEqual(result.Title, "Happy Gilmore");
-            Assert.AreNotEqual(result.Title, "Happy Days");
+            Assert.AreEqual(result.Count, 1);
+            Assert.AreNotEqual(result[0].Title, "Happy Days");
         }
 
         [Test]

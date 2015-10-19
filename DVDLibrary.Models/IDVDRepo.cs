@@ -9,7 +9,7 @@ namespace DVDLibrary.Models
     public interface IDVDRepo
     {
         List<DVD> GetAllDVDs();
-        DVD GetDVDByTitle(string title);
+        List<DVD> GetDVDByTitle(string title);
         DVD GetDVDById(int id);
         int AddDVD(DVD dvd);
         void RemoveDVD(int id);

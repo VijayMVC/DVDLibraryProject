@@ -131,11 +131,17 @@ namespace DVDLibrary.Data.Mock_Repo
             return results;
         }
 
-        public DVD GetDVDByTitle(string title)
+        public List<DVD> GetDVDByTitle(string title)
         {
-            var results = new DVD();
-
-            results = _dvds.FirstOrDefault(d => d.Title.Equals(title));
+            var results = new List<DVD>();
+            
+            foreach (var item in _dvds)
+            {
+                if (item.Title.Contains(title))
+                {
+                    results.Add(item);
+                }
+            }
 
             return results;
         }
