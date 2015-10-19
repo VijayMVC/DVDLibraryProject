@@ -14,7 +14,7 @@ namespace DVDLibrary.Models
         int AddDVD(DVD dvd);
         void RemoveDVD(int id);
         List<DVDActorDetail> GetActorDetails(int dvdId);
-        List<Actor> GetAllActors(int actorId);
+        List<Actor> GetAllActors();
         List<MPAA> GetAllMPAA();
         List<Studio> GetAllStudios();
 

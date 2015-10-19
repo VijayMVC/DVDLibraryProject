@@ -10,7 +10,7 @@ namespace DVDLibrary.Data.Mock_Repo
     public class DVDMockRepo : IDVDRepo
     {
 
-        private static List<DVD> _dvds = new List<DVD>
+        public static List<DVD> _dvds = new List<DVD>
         {
             new DVD()
             {
@@ -43,11 +43,7 @@ namespace DVDLibrary.Data.Mock_Repo
 
         private static List<MPAA> _mpaas = new List<MPAA>()
         {
-            new MPAA()
-            {
-                MPAARating = "G",
-                Description = "General Audiences"
-            },
+            new MPAA() {MPAARating = "G", Description = "General Audiences"},
             new MPAA() {MPAARating = "PG", Description = "Parental Guidance Suggested"},
             new MPAA() {MPAARating = "PG-13", Description = "Parents Strongly Cautioned"},
             new MPAA() {MPAARating = "R", Description = "Restricted"},
@@ -74,52 +70,81 @@ namespace DVDLibrary.Data.Mock_Repo
         {
            
             new DVDActorDetail() {ActorId = 2, DVDId = 1},
-            new DVDActorDetail() {ActorId = 3, DVDId = 1}
+            new DVDActorDetail() {ActorId = 3, DVDId = 1},
+            new DVDActorDetail() {ActorId = 5, DVDId = 2}
         };
 
         public int AddDVD(DVD dvd)
         {
-            throw new NotImplementedException();
+            int results = _dvds.Max(d => d.DVDId);
+
+            results++;
+
+            dvd.DVDId = results;
+
+            _dvds.Add(dvd);
+
+            return results;
         }
 
         public List<DVDActorDetail> GetActorDetails(int dvdId)
         {
-            throw new NotImplementedException();
+            var results = new List<DVDActorDetail>();
+
+            foreach (var actorDetail in _dvdActorDetails)
+            {
+                if (dvdId == actorDetail.DVDId)
+                {
+                    results.Add(actorDetail);
+                }
+            }
+
+            return results;
         }
 
-        public List<Actor> GetAllActors(int actorId)
+        public List<Actor> GetAllActors()
         {
-            throw new NotImplementedException();
+            return _actors;
         }
 
         public List<DVD> GetAllDVDs()
         {
-            throw new NotImplementedException();
+            return _dvds;
         }
 
         public List<MPAA> GetAllMPAA()
         {
-            throw new NotImplementedException();
+            return _mpaas;
         }
 
         public List<Studio> GetAllStudios()
         {
-            throw new NotImplementedException();
+            return _studios;
         }
 
         public DVD GetDVDById(int id)
         {
-            throw new NotImplementedException();
+            var results = new DVD();
+
+            results = _dvds.FirstOrDefault(d => d.DVDId.Equals(id));
+
+            return results;
         }
 
         public DVD GetDVDByTitle(string title)
         {
-            throw new NotImplementedException();
+            var results = new DVD();
+
+            results = _dvds.FirstOrDefault(d => d.Title.Equals(title));
+
+            return results;
         }
 
         public void RemoveDVD(int id)
         {
-            throw new NotImplementedException();
+            var dvdToRemove = GetDVDById(id);
+
+            _dvds.Remove(dvdToRemove);
         }
     }
 }

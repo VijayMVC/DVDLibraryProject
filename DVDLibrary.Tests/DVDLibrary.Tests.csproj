@@ -85,10 +85,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DVDLibrary.Data\DVDLibrary.Data.csproj">
+      <Project>{36b4b067-1e83-428f-a19e-23e03c8d0921}</Project>
+      <Name>DVDLibrary.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DVDLibrary.Models\DVDLibrary.Models.csproj">
+      <Project>{a3eb9c9f-ddb9-49fc-bd51-968ae495c15b}</Project>
+      <Name>DVDLibrary.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DVDLibrary\DVDLibrary.csproj">
-      <Project>{E22425F8-33E2-4A41-9286-6407299DA31D}</Project>
+      <Project>{e22425f8-33e2-4a41-9286-6407299da31d}</Project>
       <Name>DVDLibrary</Name>
     </ProjectReference>
   </ItemGroup>

@@ -1,8 +1,13 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
+using DVDLibrary.Data.Config;
 using DVDLibrary.Models;
 
 namespace DVDLibrary.Data
@@ -17,7 +22,15 @@ namespace DVDLibrary.Data
 
         public DVD GetDVDByTitle(string title)
         {
-            return null;
+            var results = new List<DVD>();
+
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var d = new DynamicParameters();
+                d.Add("DVDTitle", title);
+                results = cn.Query<DVD>("SELECT * FROM DVDs WHERE Title LIKE '%' + @DVDTitle + '%'", d).ToList();
+            }
+            return results;
         }
 
         public DVD GetDVDById(int id)
@@ -52,7 +65,7 @@ namespace DVDLibrary.Data
             return null;
         }
 
-        public List<Actor> GetAllActors(int actorId)
+        public List<Actor> GetAllActors()
         {
             // dropdown for DVD Details Page
             return null;
