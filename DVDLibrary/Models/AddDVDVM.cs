@@ -33,7 +33,7 @@ namespace DVDLibrary.Models
         {
             StudioNameSelectList = new List<SelectListItem>();
 
-            foreach (var studio in newStudios)
+            foreach (var studio in studios)
             {
                 StudioNameSelectList.Add(
                     new SelectListItem
@@ -50,7 +50,7 @@ namespace DVDLibrary.Models
         {
             MPAASelectList = new List<SelectListItem>();
 
-            foreach (var mpaa in newMPAAs)
+            foreach (var mpaa in mpaas)
             {
                 MPAASelectList.Add(
                     new SelectListItem
@@ -63,11 +63,11 @@ namespace DVDLibrary.Models
         }
 
         // This should be a ListBox on the View, so the user can select multiple Actors.
-        public void CreateActorList(List<Actor> mpaas)
+        public void CreateActorList(List<Actor> actors)
         {
-            MPAASelectList = new List<SelectListItem>();
+            ActorSelectList = new List<SelectListItem>();
 
-           foreach (var actor in newActors)
+           foreach (var actor in actors)
             {
                 ActorSelectList.Add(
                     new SelectListItem

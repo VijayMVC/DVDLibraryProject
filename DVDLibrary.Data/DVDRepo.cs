@@ -7,61 +7,69 @@ using DVDLibrary.Models;
 
 namespace DVDLibrary.Data
 {
-    public class DVDRepo
+    public class DVDRepo : IDVDRepo
     {
-        public List<DVD> GetAllDVDs
+        
+        public List<DVD> GetAllDVDs()
         {
-            
+            return null;
         }
 
         public DVD GetDVDByTitle(string title)
         {
-            
+            return null;
         }
 
         public DVD GetDVDById(int id)
         {
-            
+            return null;
         }
 
         public int AddDVD(DVD dvd)
         {
-            
+            return 1;
         }
-
+        
         public void RemoveDVD(int id)
         {
             
         }
-
-        List<DVDUserDetail> GetAllUserNotes(int dvdId)
+        
+        public List<DVDUserDetail> GetAllUserNotes(int dvdId)
         {
-            
+            return null;
         }
 
-        string GetStudioDescription(int studioId)
-        {
-            // list DVD Details Page
-        }
-
-        List<DVDActorDetail> GetActorDetails(int dvdId)
+        public string GetStudioDescription(int studioId)
         {
             // list DVD Details Page
+            return null;
         }
 
-        List<Actor> GetAllActors(int actorId)
+        public List<DVDActorDetail> GetActorDetails(int dvdId)
+        {
+            // list DVD Details Page
+            return null;
+        }
+
+        public List<Actor> GetAllActors(int actorId)
         {
             // dropdown for DVD Details Page
+            return null;
         }
 
-        List<MPAA> GetAllMPAA()
+        public List<MPAA> GetAllMPAA()
         {
             // dropdown for Add DVD Page
+            return null;
         }
 
-        List<Studio> GetAllStudios()
+        public List<Studio> GetAllStudios()
         {
             // dropdown for Add DVD Page
+            return null;
         }
+
+    
     }
 }

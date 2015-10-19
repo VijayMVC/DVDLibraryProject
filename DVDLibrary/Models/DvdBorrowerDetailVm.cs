@@ -5,7 +5,7 @@ using System.Web;
 
 namespace DVDLibrary.Models
 {
-    public class BorrowerDetailVM
+    public class DvdBorrowerDetailVM
     {
         public DVD Dvd { get; set; }
         public List<DVDBorrowerDetail> BorrowerDetails { get; set; }
