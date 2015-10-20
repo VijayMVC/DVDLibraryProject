@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DVDLibrary.Data;
 using DVDLibrary.Data.Mock_Repo;
 using DVDLibrary.Models;
 using NUnit.Framework;
@@ -119,6 +120,26 @@ namespace DVDLibrary.Tests
 
             Assert.AreEqual(DVDMockRepo._dvds.Count, 4);
             Assert.AreEqual(DVDMockRepo._dvds[3].Title, "Test");
+        }
+
+        [Test]
+        public void AddDVDTestProduction()
+        {
+            var repo = new DVDRepo();
+
+            var dvd = new DVD()
+            {
+                Title = "Test",
+                ReleaseDate = new DateTime(2015, 10, 19),
+                MPAA = "R",
+                Director = "Mr. Test",
+                StudioID = 1
+            };
+
+            int dvdId = repo.AddDVD(dvd);
+
+            Assert.AreEqual(dvdId, 19);
+            //Assert.AreEqual(DVDMockRepo._dvds[3].Title, "Test");
         }
     }
 }
