@@ -95,7 +95,8 @@ VALUES ('Paul'),
 		('Randall'),
 		('Jim'),
 		('Ringo'),
-		('Matteo')
+		('Matteo'),
+		('Heather');
 
 ----- Begin with the individual DVDs ----
 
@@ -179,7 +180,8 @@ VALUES (4,5, '04-22-2001', '04-24-2001'),
 INSERT INTO UserNotesDVDDetails (DVDID, UserID, Rating, UserNotesDescription)
 VALUES (4, 5, 4, null),
 		(4, 6, 4, 'I want to be Korben Dallas.'),
-		(4, 2,  4, 'Idk, Paul made me watch it.');
+		(4, 2,  4, 'Idk, Paul made me watch it.'),
+		(4, 10, 5, 'Those were the days when Bruce Willis had hair.');
 
 		----- Mr. Holland's Opus -------
 
