@@ -21,9 +21,9 @@ namespace DVDLibrary.Controllers
         public ActionResult GetAllDVDs()
         {
             var repo = new DVDRepo();
-
+            //ViewBag.Title = "ListDVDsByTitle";
             var results = repo.GetAllDVDs();
-            ViewBag.title = "Dvds in Collection";
+            ViewBag.Title = "DVDs in Collection";
             return View("ListDVDsByTitle", results);
         }
 
@@ -51,15 +51,15 @@ namespace DVDLibrary.Controllers
             {
                 return View("EmptySearch");
             }
-            //redirect to List DVDs View
-
+            
             if(results.Count == 0)
                 return View("NoResults");
 
+            ViewBag.Title = "ListDVDsByTitle";
+            //redirect to List DVDs View
             return View();
         }
-
-
+        
         public ActionResult SearchByTitle()
         {
             //redirect to List DVDs View
