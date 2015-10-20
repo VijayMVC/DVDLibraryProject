@@ -3,7 +3,7 @@ GO
 
 
 --Add the DVD
-CREATE PROCEDURE AddDVD
+CREATE PROCEDURE SP_AddDVD
 (
  @Title varchar(140),
  @ReleaseDate date,
@@ -18,7 +18,7 @@ VALUES (@Title, @ReleaseDate, @MPAA, @Director, @StudioID);
 GO
 
 --Return the number of the most recent DVD Created
-CREATE PROCEDURE ReturnMostRecentDVDID
+CREATE PROCEDURE SP_ReturnMostRecentDVDID
 AS
 
 SELECT MAX(DVDID)
@@ -28,7 +28,7 @@ FROM DVDs
 GO
 
 -- You'll have to call this for each actor
-CREATE PROCEDURE AddDVDActorDetails
+CREATE PROCEDURE SP_AddDVDActorDetails
 (
  @DVDID int,
  @ActorID int
