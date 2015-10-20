@@ -138,8 +138,21 @@ namespace DVDLibrary.Tests
 
             int dvdId = repo.AddDVD(dvd);
 
+            //change depending on your database
             Assert.AreEqual(dvdId, 19);
-            //Assert.AreEqual(DVDMockRepo._dvds[3].Title, "Test");
+
+        }
+
+        [Test]
+        public void RemoveDVDProduction()
+        {
+            var repo = new DVDRepo();
+
+            repo.RemoveDVD(20);
+
+            //change depending on your database
+            //Assert.AreEqual(true, true);
+
         }
     }
 }

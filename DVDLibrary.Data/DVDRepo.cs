@@ -66,24 +66,60 @@ namespace DVDLibrary.Data
                 command.CommandText = "SP_AddDVD";
                 command.CommandType = CommandType.StoredProcedure;
 
+                var outputParam = new SqlParameter("@DVDID", SqlDbType.Int) {Direction = ParameterDirection.Output};
+
                 command.Connection = connection;
                 command.Parameters.AddWithValue("@Title", dvd.Title);
-                command.Parameters.AddWithValue("@Release", dvd.ReleaseDate.Date.ToString());
+                command.Parameters.AddWithValue("@ReleaseDate", dvd.ReleaseDate.Date.ToString("MM-dd-yyyy"));
                 command.Parameters.AddWithValue("@MPAA", dvd.MPAA);
                 command.Parameters.AddWithValue("@Director", dvd.Director);
                 command.Parameters.AddWithValue("@StudioID", dvd.StudioID);
-
+                command.Parameters.Add(outputParam);
                 connection.Open();
 
-                dvdid = command.ExecuteNonQuery();
+                command.ExecuteNonQuery();
+
+                dvdid = (int) outputParam.Value;
             }
 
             return dvdid;
         }
+
+        public void AddDVDActorDetails(int dvdid, int actorid)
+        {
+            using (var connection = new SqlConnection(Settings.ConnectionString))
+            {
+                var command = new SqlCommand();
+                command.CommandText = "SP_AddDVDActorDetails";
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Connection = connection;
+                command.Parameters.AddWithValue("@DVDID", dvdid);
+                command.Parameters.AddWithValue("@ActorID", actorid);
+
+                connection.Open();
+
+                command.ExecuteNonQuery();
+
+            }
+        }
         
         public void RemoveDVD(int id)
         {
-            
+            using (var connection = new SqlConnection(Settings.ConnectionString))
+            {
+                var command = new SqlCommand();
+                command.CommandText = "UPDATE DVDs" +
+                                       " SET IsInCollection = 0" +
+                                        " WHERE DVDs.DVDID = " + id;
+
+                command.Connection = connection;
+
+                connection.Open();
+
+                command.ExecuteNonQuery();
+
+            }
         }
         
         public List<DVDUserDetail> GetAllUserNotes(int dvdId)
