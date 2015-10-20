@@ -21,9 +21,14 @@ namespace DVDLibrary.Controllers
         public ActionResult GetAllDVDs()
         {
             var repo = new DVDRepo();
-            //ViewBag.Title = "ListDVDsByTitle";
+
             var results = repo.GetAllDVDs();
+
             ViewBag.Title = "DVDs in Collection";
+
+            if (results.Count == 0)
+                return View("NoResults");
+
             return View("ListDVDsByTitle", results);
         }
 
@@ -55,9 +60,8 @@ namespace DVDLibrary.Controllers
             if(results.Count == 0)
                 return View("NoResults");
 
-            ViewBag.Title = "ListDVDsByTitle";
             //redirect to List DVDs View
-            return View();
+            return View(results);
         }
         
         public ActionResult SearchByTitle()
@@ -66,14 +70,31 @@ namespace DVDLibrary.Controllers
             return View();
         }
 
-        public ActionResult DVDDetails(int dvdId, DVDDetailVM vm)
+        public ActionResult DVDDetails(int id)
         {
-            return View();
+            var vm = new DVDDetailVM();
+            var repo = new DVDRepo();
+            var results = new List<DVDActorDetail>();
+            results = repo.GetActorDetails(id);
+
+            vm.Dvd = repo.GetDVDById(id);
+            vm.StudioDescription = repo.GetStudioDescription(vm.Dvd.StudioID);
+            vm.ActorNames = repo.GetActorById(results);
+
+            return View(vm);
         }
 
-        public ActionResult ListBorrowersByDVD(int dvdId, DvdBorrowerDetailVM vm)
+        public ActionResult ListBorrowersByDVD(int id)
         {
-            return View();
+            var vm = new DvdBorrowerDetailVM();
+            var dvdRepo = new DVDRepo();
+            var borrowerRepo = new BorrowerRepo();
+
+            vm.Dvd = dvdRepo.GetDVDById(id);
+            vm.BorrowerDetails = borrowerRepo.GetAllBorrowerDetails(id);
+            vm.BorrowerName = borrowerRepo.GetBorrowerById(vm.BorrowerDetails);
+
+            return View(vm);
         }
 
         public ActionResult RemoveDVD(int dvdId)

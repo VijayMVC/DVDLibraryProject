@@ -45,7 +45,15 @@ namespace DVDLibrary.Data
 
         public DVD GetDVDById(int id)
         {
-            return null;
+            var results = new DVD();
+
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var d = new DynamicParameters();
+                d.Add("DVDId", id);
+                results = cn.Query<DVD>("SELECT * FROM DVDs WHERE DVDId = @DVDId", d).FirstOrDefault();
+            }
+            return results;
         }
 
         public int AddDVD(DVD dvd)
@@ -85,14 +93,45 @@ namespace DVDLibrary.Data
 
         public string GetStudioDescription(int studioId)
         {
-            // list DVD Details Page
-            return null;
+            string results = "";
+
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var d = new DynamicParameters();
+                d.Add("studioID", studioId);
+                results = cn.Query<string>("SELECT studioName FROM studios WHERE studioId = @studioId", d).FirstOrDefault();
+            }
+            return results;
         }
 
         public List<DVDActorDetail> GetActorDetails(int dvdId)
         {
-            // list DVD Details Page
-            return null;
+            var results = new List<DVDActorDetail>();
+
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var d = new DynamicParameters();
+                d.Add("dvdID", dvdId);
+                results = cn.Query<DVDActorDetail>("SELECT * FROM dvdactordetails WHERE dvdId = @dvdId", d).ToList();
+            }
+            return results;
+        }
+
+        public List<string> GetActorById(List<DVDActorDetail> details)
+        {
+            var resultNames = new List<string>();
+
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                foreach (var detail in details)
+                {
+                    var d = new DynamicParameters();
+                    d.Add("actorID", detail.ActorId);
+                    var results = cn.Query<string>("SELECT ActorName FROM actors WHERE actorId = @actorId", d).FirstOrDefault();
+                    resultNames.Add(results);
+                }               
+            }
+            return resultNames;
         }
 
         public List<Actor> GetAllActors()

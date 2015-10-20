@@ -9,6 +9,6 @@ namespace DVDLibrary.Models
     {
         public DVD Dvd { get; set; }
         public List<DVDBorrowerDetail> BorrowerDetails { get; set; }
-        public string BorrowerName { get; set; }
+        public List<Borrower> BorrowerName { get; set; }
     }
 }

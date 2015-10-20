@@ -8,12 +8,14 @@ namespace DVDLibrary.Models
     public class DVDDetailVM
     {
         public DVD Dvd { get; set; }
-        public string StudioDescription { get; set; }
-        public List<DVDActorDetail> ActorDetails { get; set; } 
+        public string StudioDescription { get; set; } 
+        public List<string> ActorNames { get; set; } 
 
-        public DVDDetailVM(string studioDescription)
+        public DVDDetailVM()
         {
-            StudioDescription = studioDescription;
+            Dvd = new DVD();
+            StudioDescription = "";
+            ActorNames = new List<string>();
         }
     }
 }
