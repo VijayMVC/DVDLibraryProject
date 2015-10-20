@@ -3,9 +3,9 @@
     ViewBag.Title = "NoResults";
 }
 
-<h2>No Results</h2>
+<h2>Error</h2>
 
-<p>Your search returned no values. </p>
+<p>You must enter at least one search term to search by title</p>
 
 @Html.ActionLink("Try Again", "SearchByTitle", "Home", new { area = "" }, new { @class = "navbar-brand" })
 @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })

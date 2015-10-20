@@ -18,7 +18,15 @@ namespace DVDLibrary.Data
         
         public List<DVD> GetAllDVDs()
         {
-            return null;
+
+            var results = new List<DVD>();
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var d = new DynamicParameters();
+                d.Add("InCollection", 1);
+                results = cn.Query<DVD>("SELECT * FROM DVDs WHERE IsInCollection = @InCollection", d).ToList();
+            }
+            return results;
         }
 
         public List<DVD> GetDVDByTitle(string title)
