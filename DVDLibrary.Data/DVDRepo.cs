@@ -76,10 +76,42 @@ namespace DVDLibrary.Data
 
             return dvdid;
         }
+
+        public void AddDVDActorDetails(int dvdid, int actorid)
+        {
+            using (var connection = new SqlConnection(Settings.ConnectionString))
+            {
+                var command = new SqlCommand();
+                command.CommandText = "SP_AddDVDActorDetails";
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Connection = connection;
+                command.Parameters.AddWithValue("@DVDID", dvdid);
+                command.Parameters.AddWithValue("@ActorID", actorid);
+
+                connection.Open();
+
+                command.ExecuteNonQuery();
+
+            }
+        }
         
         public void RemoveDVD(int id)
         {
-            
+            using (var connection = new SqlConnection(Settings.ConnectionString))
+            {
+                var command = new SqlCommand();
+                command.CommandText = "UPDATE DVDs" +
+                                       " SET IsInCollection = 0" +
+                                        " WHERE DVDs.DVDID = " + id;
+
+                command.Connection = connection;
+
+                connection.Open();
+
+                command.ExecuteNonQuery();
+
+            }
         }
         
         public List<DVDUserDetail> GetAllUserNotes(int dvdId)
