@@ -58,16 +58,20 @@ namespace DVDLibrary.Data
                 command.CommandText = "SP_AddDVD";
                 command.CommandType = CommandType.StoredProcedure;
 
+                var outputParam = new SqlParameter("@DVDID", SqlDbType.Int) {Direction = ParameterDirection.Output};
+
                 command.Connection = connection;
                 command.Parameters.AddWithValue("@Title", dvd.Title);
-                command.Parameters.AddWithValue("@Release", dvd.ReleaseDate.Date.ToString());
+                command.Parameters.AddWithValue("@ReleaseDate", dvd.ReleaseDate.Date.ToString("MM-dd-yyyy"));
                 command.Parameters.AddWithValue("@MPAA", dvd.MPAA);
                 command.Parameters.AddWithValue("@Director", dvd.Director);
                 command.Parameters.AddWithValue("@StudioID", dvd.StudioID);
-
+                command.Parameters.Add(outputParam);
                 connection.Open();
 
-                dvdid = command.ExecuteNonQuery();
+                command.ExecuteNonQuery();
+
+                dvdid = (int) outputParam.Value;
             }
 
             return dvdid;

@@ -3,33 +3,26 @@ GO
 
 
 --Add the DVD
-ALTER PROCEDURE SP_AddDVD
+CREATE PROCEDURE SP_AddDVD
 (
  @Title varchar(140),
  @ReleaseDate date,
  @MPAA varchar(10),
  @Director varchar(90),
- @StudioID int
+ @StudioID int,
+ @DVDID int output
 ) AS
 
-INSERT INTO DVDs (Title, ReleaseDate, MPAA, Director, StudioID)  OUTPUT Inserted.DVDID
+INSERT INTO DVDs (Title, ReleaseDate, MPAA, Director, StudioID)
 VALUES (@Title, @ReleaseDate, @MPAA, @Director, @StudioID);
 
-GO
-
---Return the number of the most recent DVD Created
-ALTER PROCEDURE SP_ReturnMostRecentDVDID
-AS
-
-SELECT MAX(DVDID)
-FROM DVDs
-RETURN 
-
+SET @DVDID = SCOPE_IDENTITY();
 
 GO
+
 
 -- You'll have to call this for each actor
-ALTER PROCEDURE SP_AddDVDActorDetails
+CREATE PROCEDURE SP_AddDVDActorDetails
 (
  @DVDID int,
  @ActorID int
