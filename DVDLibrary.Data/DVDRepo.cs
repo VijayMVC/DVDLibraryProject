@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Sockets;
@@ -41,7 +42,27 @@ namespace DVDLibrary.Data
 
         public int AddDVD(DVD dvd)
         {
-            return 1;
+            int dvdid;
+
+            using (var connection = new SqlConnection(Settings.ConnectionString))
+            {
+                var command = new SqlCommand();
+                command.CommandText = "SP_AddDVD";
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Connection = connection;
+                command.Parameters.AddWithValue("@Title", dvd.Title);
+                command.Parameters.AddWithValue("@Release", dvd.ReleaseDate.Date.ToString());
+                command.Parameters.AddWithValue("@MPAA", dvd.MPAA);
+                command.Parameters.AddWithValue("@Director", dvd.Director);
+                command.Parameters.AddWithValue("@StudioID", dvd.StudioID);
+
+                connection.Open();
+
+                dvdid = command.ExecuteNonQuery();
+            }
+
+            return dvdid;
         }
         
         public void RemoveDVD(int id)
