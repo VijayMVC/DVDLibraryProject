@@ -92,7 +92,7 @@ namespace DVDLibrary.Controllers
 
             vm.Dvd = dvdRepo.GetDVDById(id);
             vm.BorrowerDetails = borrowerRepo.GetAllBorrowerDetails(id);
-            vm.BorrowerName = borrowerRepo.GetBorrowerById(vm.BorrowerDetails);
+            vm.Borrowers = borrowerRepo.GetBorrowerById(vm.BorrowerDetails);
 
             return View(vm);
         }

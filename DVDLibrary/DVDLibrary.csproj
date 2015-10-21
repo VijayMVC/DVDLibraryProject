@@ -137,6 +137,7 @@
     <Content Include="Views\Home\NoResults.cshtml" />
     <Content Include="Views\Home\EmptySearch.cshtml" />
     <Content Include="Views\Home\DVDDetails.cshtml" />
+    <Content Include="Views\Home\ListBorrowersByDVD.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
