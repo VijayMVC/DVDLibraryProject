@@ -9,6 +9,6 @@ namespace DVDLibrary.Models
     public class MPAA
     {
         public string MPAARating { get; set; }
-        public string Description { get; set; }
+        public string MPAADescription { get; set; }
     }
 }

@@ -43,11 +43,11 @@ namespace DVDLibrary.Data.Mock_Repo
 
         private static List<MPAA> _mpaas = new List<MPAA>()
         {
-            new MPAA() {MPAARating = "G", Description = "General Audiences"},
-            new MPAA() {MPAARating = "PG", Description = "Parental Guidance Suggested"},
-            new MPAA() {MPAARating = "PG-13", Description = "Parents Strongly Cautioned"},
-            new MPAA() {MPAARating = "R", Description = "Restricted"},
-            new MPAA() {MPAARating = "NC-17", Description = "No under 17 allowed"}
+            new MPAA() {MPAARating = "G", MPAADescription = "General Audiences"},
+            new MPAA() {MPAARating = "PG", MPAADescription = "Parental Guidance Suggested"},
+            new MPAA() {MPAARating = "PG-13", MPAADescription = "Parents Strongly Cautioned"},
+            new MPAA() {MPAARating = "R", MPAADescription = "Restricted"},
+            new MPAA() {MPAARating = "NC-17", MPAADescription = "No under 17 allowed"}
         };
 
         private static List<Studio> _studios = new List<Studio>()

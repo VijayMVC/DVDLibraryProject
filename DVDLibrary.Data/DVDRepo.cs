@@ -172,20 +172,41 @@ namespace DVDLibrary.Data
 
         public List<Actor> GetAllActors()
         {
-            // dropdown for DVD Details Page
-            return null;
+            var results = new List<Actor>();
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var d = new DynamicParameters();
+                d.Add("InCollection", 1);
+                results = cn.Query<Actor>("SELECT * FROM Actors", d).ToList();
+            }
+            return results;
+
         }
 
         public List<MPAA> GetAllMPAA()
         {
-            // dropdown for Add DVD Page
-            return null;
+            var results = new List<MPAA>();
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var d = new DynamicParameters();
+                d.Add("InCollection", 1);
+
+                //since the database column name differs from the object property name, you can manually map it 
+                results = cn.Query<MPAA>("SELECT MPAA MPAARating, MPAADescription MPAADescription FROM MPAA", d).ToList();
+            }
+            return results;
         }
 
         public List<Studio> GetAllStudios()
         {
-            // dropdown for Add DVD Page
-            return null;
+            var results = new List<Studio>();
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var d = new DynamicParameters();
+                d.Add("InCollection", 1);
+                results = cn.Query<Studio>("SELECT * FROM Studios", d).ToList();
+            }
+            return results;
         }
 
     

@@ -34,14 +34,29 @@ namespace DVDLibrary.Controllers
 
         public ActionResult AddDVD()
         {
-            return View();
+            var repo = new DVDRepo();
+            var vm = new AddDVDVM();
+
+            vm.CreateActorList(repo.GetAllActors());
+            vm.CreateMPAAList(repo.GetAllMPAA());
+            vm.CreateStudioList(repo.GetAllStudios());
+
+            return View("AddDVD", vm);
         }
 
         [HttpPost]
         public ActionResult AddDVD(AddDVDVM vm)
         {
-            //redirect to Success View
-            return View();
+            var repo = new DVDRepo();
+
+            int dvdid = repo.AddDVD(vm.DvdToAdd);
+
+            foreach (var actorId in vm.ActorSelectedValues)
+            {
+                repo.AddDVDActorDetails(dvdid, actorId);
+            }
+
+            return View("SuccessPage");
         }
 
         [HttpPost]
@@ -97,15 +112,14 @@ namespace DVDLibrary.Controllers
             return View(vm);
         }
 
-        public ActionResult RemoveDVD(int dvdId)
+        public ActionResult RemoveDVD(int id)
         {
-            //redirect to Success View
-            return View();
+            var repo = new DVDRepo();
+
+            repo.RemoveDVD(id);
+
+            return View("SuccessPage");
         }
 
-        public ActionResult Success()
-        {
-            return View();
-        }
     }
 }
