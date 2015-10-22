@@ -49,14 +49,27 @@ namespace DVDLibrary.Controllers
         {
             var repo = new DVDRepo();
 
-            int dvdid = repo.AddDVD(vm.DvdToAdd);
-
-            foreach (var actorId in vm.ActorSelectedValues)
+            if (ModelState.IsValid)
             {
-                repo.AddDVDActorDetails(dvdid, actorId);
+
+                int dvdid = repo.AddDVD(vm.DvdToAdd);
+
+                foreach (var actorId in vm.ActorSelectedValues)
+                {
+                    repo.AddDVDActorDetails(dvdid, actorId);
+                }
+
+                return View("SuccessPage");
             }
 
-            return View("SuccessPage");
+            else
+            {
+                vm.CreateActorList(repo.GetAllActors());
+                vm.CreateMPAAList(repo.GetAllMPAA());
+                vm.CreateStudioList(repo.GetAllStudios());
+                return View("AddDVD", vm);
+            }
+
         }
 
         [HttpPost]

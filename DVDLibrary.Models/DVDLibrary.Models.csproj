@@ -78,6 +78,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actor.cs" />
+    <Compile Include="Attributes\LengthCheckAttribute.cs" />
+    <Compile Include="Attributes\LongerLengthCheckAttribute.cs" />
     <Compile Include="Borrower.cs" />
     <Compile Include="DVD.cs" />
     <Compile Include="DVDActorDetail.cs" />
@@ -92,6 +94,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

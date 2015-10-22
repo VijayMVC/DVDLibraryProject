@@ -30,7 +30,7 @@
         <td>
             @Html.ActionLink("Edit", "ListDVDsByTitle", new {id = item.DVDId}) |
             @Html.ActionLink("Details", "DVDDetails", new {id = item.DVDId}) |
-            @Html.ActionLink("Delete", "RemoveDVD", new { id = item.DVDId }) |
+            @Html.ActionLink("Delete", "RemoveDVD", new { id = item.DVDId }) 
             @*<a href="@Url.Action("RemoveDVD", "Home", new { id = item.DVDId})" onclick =" return confirmChoice()">Delete</a>*@
         </td>
     </tr>

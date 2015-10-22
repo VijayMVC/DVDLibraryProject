@@ -3,28 +3,18 @@
 @{
     ViewBag.Title = "AddDVD";
 }
-<!--
-        public int DVDId { get; set; }
-        public string Title { get; set; }
 
-        [DataType(DataType.Date)]
-        public DateTime ReleaseDate { get; set; }
-
-        public string MPAA { get; set; }
-        public string Director { get; set; }
-        public int StudioID { get; set; }
-    -->
 <h2>Add a new DVD</h2>
 
 @using (Html.BeginForm("AddDVD", "Home", FormMethod.Post))
 {
     <div class="form-group''"></div>
 
-    <label> Title </label>
+    <label> Title </label>@Html.ValidationMessageFor(d => d.DvdToAdd.Title)
     @Html.TextBoxFor(m => m.DvdToAdd.Title, new { @class = "form-control", @placeholder = " No more than 140 characters "})
     <br/>
 
-    <label> Director </label>
+    <label> Director </label>@Html.ValidationMessageFor(d => d.DvdToAdd.Director)
     @Html.TextBoxFor(m => m.DvdToAdd.Director, new { @class = "form-control", @placeholder = " No more than 90 characters " })
     <br/>
 
@@ -34,7 +24,7 @@
     <br/>
 
     <label> MPAA Rating </label>
-    @Html.DropDownListFor(m => m.DvdToAdd.MPAA, Model.MPAASelectList)
+     @Html.DropDownListFor(m => m.DvdToAdd.MPAA, Model.MPAASelectList)
     <br/>
     <br/>
 
