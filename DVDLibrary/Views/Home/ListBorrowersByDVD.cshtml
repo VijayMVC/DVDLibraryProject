@@ -29,7 +29,22 @@
                 @Html.DisplayFor(modelItem => item.DateBorrowed)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateReturned)
+                @{
+                    var dateReturned = "";
+                    if (item.DateReturned == null)
+                    {
+                        dateReturned = "still checked out";
+                    }
+                    else
+                    {
+                        dateReturned = item.DateReturned.Value.ToString("dd/MM/yyyy");
+                    }
+
+                }
+
+                @dateReturned
+                
+                @*@Html.DisplayFor(modelItem => item.DateReturned)*@
             </td>
 
             <td>
