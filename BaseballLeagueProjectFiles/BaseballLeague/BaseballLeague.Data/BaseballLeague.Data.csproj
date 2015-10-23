@@ -46,8 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\Settings.cs" />
+
     <Compile Include="PlayersRepo.cs" />
     <Compile Include="ThisIsAName.cs" />
+    <Compile Include="TeamRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
