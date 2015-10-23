@@ -20,7 +20,9 @@ namespace BaseballLeague.Data
             var results = new List<Team>();
             using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
             {
-                results = cn.Query<Team>("SELECT * FROM Teams").ToList();
+                var p = new DynamicParameters();
+                p.Add("LeagueID", leagueId);
+                results = cn.Query<Team>("SELECT * FROM Teams t INNER JOIN LeagueTeamDetails l ON t.teamID = l.teamID WHERE LeagueID = @LeagueID", p).ToList();
             }
             return results;
         }

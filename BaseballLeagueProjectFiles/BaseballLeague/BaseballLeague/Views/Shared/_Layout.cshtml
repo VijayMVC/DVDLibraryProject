@@ -18,6 +18,14 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown"> Players <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Add A Player", "AddPlayer", "Player")</li>
+                    </ul>
+                </li>
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

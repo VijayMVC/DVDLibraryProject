@@ -10,9 +10,6 @@ namespace BaseballLeague.Models
     {
         public Player PlayerToAdd { get; set; }
 
-        public List<SelectListItem> LeagueNameSelectList { get; set; }
-        public int LeagueSelectedValue { get; set; }
-
         public List<SelectListItem> TeamNameSelectList { get; set; }
         public int TeamSelectedValue { get; set; }
 
@@ -20,22 +17,6 @@ namespace BaseballLeague.Models
         {
             PlayerToAdd = new Player();
             TeamNameSelectList = new List<SelectListItem>();
-        }
-
-        public void CreateLeagueList(List<League> leagues)
-        {
-            LeagueNameSelectList = new List<SelectListItem>();
-
-            foreach (var league in leagues)
-            {
-                LeagueNameSelectList.Add(
-                    new SelectListItem
-                    {
-                        Text = league.LeagueName,
-                        Value = league.LeagueID.ToString()
-                    }
-                );
-            }
         }
 
         public void CreateTeamList(List<Team> teams)
