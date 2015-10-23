@@ -44,10 +44,13 @@ namespace BaseballLeague.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                var successVM = new AddPlayerSuccessVM();
                 Player player = _playerRepo.AddPlayer(vm.PlayerToAdd);
+                successVM.PlayerToAdd = player;
+                successVM.Position = _playerRepo.GetPositionByID(vm.PlayerToAdd.PositionID);
+                successVM.Team = _playerRepo.GetTeamByID(vm.PlayerToAdd.TeamID);
                 
-                return View("AddPlayerSuccess", player);
+                return View("AddPlayerSuccess", successVM);
             }
 
             else

@@ -69,5 +69,29 @@ namespace BaseballLeague.Data
             }
             return results;
         } 
+
+        public string GetPositionByID(int id)
+        {
+            string position;
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var p = new DynamicParameters();
+                p.Add("PositionID", id);
+                position = cn.Query<string>("SELECT PositionName FROM Positions where positionID = @PositionID", p).FirstOrDefault();
+            }
+            return position;
+        }
+
+        public string GetTeamByID(int id)
+        {
+            string position;
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var p = new DynamicParameters();
+                p.Add("TeamID", id);
+                position = cn.Query<string>("SELECT TeamName FROM Teams where teamID = @TeamID", p).FirstOrDefault();
+            }
+            return position;
+        }
     }
 }

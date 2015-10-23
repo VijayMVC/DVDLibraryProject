@@ -1,8 +1,5 @@
-﻿@model BaseballLeague.Models.Player
+﻿@model BaseballLeague.Models.AddPlayerSuccessVM
 
-@{
-    ViewBag.Title = "AddPlayerSuccess";
-}
 
 <h2>Congratulations, your player was added!</h2>
 
@@ -11,56 +8,56 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.PlayerName)
+            @Html.DisplayNameFor(model => model.PlayerToAdd.PlayerName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PlayerName)
+            @Html.DisplayFor(model => model.PlayerToAdd.PlayerName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.JerseyNumber)
+            @Html.DisplayNameFor(model => model.PlayerToAdd.JerseyNumber)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.JerseyNumber)
+            @Html.DisplayFor(model => model.PlayerToAdd.JerseyNumber)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PositionID)
+            @Html.DisplayNameFor(model => model.Position)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PositionID)
+            @Html.DisplayFor(model => model.Position)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PreviousYrsBattingAvg)
+            @Html.DisplayNameFor(model => model.PlayerToAdd.PreviousYrsBattingAvg)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PreviousYrsBattingAvg)
+            @Html.DisplayFor(model => model.PlayerToAdd.PreviousYrsBattingAvg)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NumYrsPlayed)
+            @Html.DisplayNameFor(model => model.PlayerToAdd.NumYrsPlayed)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NumYrsPlayed)
+            @Html.DisplayFor(model => model.PlayerToAdd.NumYrsPlayed)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TeamID)
+            @Html.DisplayNameFor(model => model.Team)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TeamID)
+            @Html.DisplayFor(model => model.Team)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PlayerID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Add Another Player", "AddPlayer", "Player") |
+    @Html.ActionLink("Home", "Index", "Home")
 </p>

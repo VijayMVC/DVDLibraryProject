@@ -12,17 +12,42 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
+                @*
+                                @Html.ActionLink("Talladega Baseball League", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                                <div>
+                                     @Html.ActionLink("Add A Player", "AddPlayer", "Player", new { area = "" }, new { @class = "navbar-brand" })
+                                     @Html.ActionLink("View Teams", "Index", "Team", new { area = "" }, new { @class = "navbar-brand" })
+                                     @Html.ActionLink("Add A Team", "AddTeam", "Team", new { area = "" }, new { @class = "navbar-brand" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
 
-                @Html.ActionLink("Talladega Baseball League", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                <div>
-                     @Html.ActionLink("Add A Player", "AddPlayer", "Player", new { area = "" }, new { @class = "navbar-brand" })
-                     @Html.ActionLink("View Teams", "Index", "Team", new { area = "" }, new { @class = "navbar-brand" })
-                     @Html.ActionLink("Add A Team", "AddTeam", "Team", new { area = "" }, new { @class = "navbar-brand" })
+                <div class="collapse navbar-collapse" id="mainnav">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown"> Team Management <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Add A Team", "AddTEam", "Team")</li>
+                                <li>@Html.ActionLink("View Teams", "Index", "Team")</li>
+
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown"> Player Management <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Add a Player", "AddPlayer", "Player")</li>
+                                <li>@Html.ActionLink("View All Players for a Team", "AddPlayer", "Player")</li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-
 
     <div class="container body-content">
         @RenderBody()

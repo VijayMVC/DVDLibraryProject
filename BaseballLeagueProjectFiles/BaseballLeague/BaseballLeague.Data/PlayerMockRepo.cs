@@ -24,7 +24,17 @@ namespace BaseballLeague.Data
             throw new NotImplementedException();
         }
 
+        public string GetPositionByID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Position> GetPositions()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetTeamByID(int id)
         {
             throw new NotImplementedException();
         }
