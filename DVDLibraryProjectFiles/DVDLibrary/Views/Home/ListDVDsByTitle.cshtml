@@ -28,15 +28,13 @@
             @Html.DisplayFor(modelItem => item.MPAA)
         </td>
         <td>
-            @Html.ActionLink("Edit", "ListDVDsByTitle", new {id = item.DVDId}) |
             @Html.ActionLink("Details", "DVDDetails", new {id = item.DVDId}) |
-            @Html.ActionLink("Delete", "RemoveDVD", new { id = item.DVDId }) 
-            @*<a href="@Url.Action("RemoveDVD", "Home", new { id = item.DVDId})" onclick =" return confirmChoice()">Delete</a>*@
+            @Html.ActionLink("Delete", "RemoveDVD", "Home", new { id = item.DVDId }, new { onclick="return confirm('Are you sure you wish to delete this DVD?')"} )
+               
         </td>
     </tr>
 }
 
 </table>
 
-@Html.ActionLink("Add a DVD", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-@Html.ActionLink("View all DVDs", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+@*@Html.ActionLink("Add a DVD", "AddDVD", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
