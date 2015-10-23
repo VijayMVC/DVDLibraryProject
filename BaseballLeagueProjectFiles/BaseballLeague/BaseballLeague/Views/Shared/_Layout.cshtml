@@ -12,36 +12,26 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                
 
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown"> Players <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Add A Player", "AddPlayer", "Player")</li>
-                        </ul>
-                    </li>
-                </ul>
+                @Html.ActionLink("Talladega Baseball League", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <div>
+                     @Html.ActionLink("Add A Player", "AddPlayer", "Player", new { area = "" }, new { @class = "navbar-brand" })
+                     @Html.ActionLink("View Teams", "Index", "Team", new { area = "" }, new { @class = "navbar-brand" })
+                     @Html.ActionLink("Add A Team", "AddTeam", "Team", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
             </div>
         </div>
     </div>
 
+
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
+
+    <hr />
+    <footer>
+        <p style="margin-left: 1%">&copy; @DateTime.Now.Year - Talladega Enterprises</p>
+    </footer>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
