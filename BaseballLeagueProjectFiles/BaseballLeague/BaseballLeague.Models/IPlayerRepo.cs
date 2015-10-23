@@ -12,5 +12,6 @@ namespace BaseballLeague.Models
         Player AddPlayer(Player player);
         Player TradePlayer(int playerId, int teamId);
         void DeletePlayerFromTeam(int playerId);
+        List<Position> GetPositions();
     }
 }

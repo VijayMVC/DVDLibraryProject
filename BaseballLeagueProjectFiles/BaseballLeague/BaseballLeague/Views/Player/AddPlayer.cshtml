@@ -7,7 +7,7 @@
 <h2>Add Player</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("AddPlayer", "Player", FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
     
@@ -61,9 +61,7 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>

@@ -137,6 +137,7 @@
     <Content Include="Views\Team\SuccessPage.cshtml" />
     <Content Include="Views\Player\AddPlayer.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Player\AddPlayerSuccess.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

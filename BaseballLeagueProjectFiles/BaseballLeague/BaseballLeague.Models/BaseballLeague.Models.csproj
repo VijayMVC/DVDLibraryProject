@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IPlayerRepo.cs" />
+    <Compile Include="ITeamRepo.cs" />
     <Compile Include="League.cs" />
     <Compile Include="LeagueTeamDetail.cs" />
     <Compile Include="Player.cs" />

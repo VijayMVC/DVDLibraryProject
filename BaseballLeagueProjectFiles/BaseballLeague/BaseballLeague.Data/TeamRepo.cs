@@ -13,7 +13,7 @@ using Dapper;
 
 namespace BaseballLeague.Data
 {
-    public class TeamRepo
+    public class TeamRepo : ITeamRepo
     {
         public List<Team> GetTeams(int leagueId)
         {
