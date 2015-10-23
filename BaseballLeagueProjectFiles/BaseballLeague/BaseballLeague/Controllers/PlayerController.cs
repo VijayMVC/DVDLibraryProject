@@ -17,6 +17,7 @@ namespace BaseballLeague.Controllers
             var vm = new AddPlayerVM();
 
             vm.CreateTeamList(teamRepo.GetTeams());
+            vm.CreatePositionList(playerRepo.GetPositions());
 
             return View("AddPlayer", vm);
         }

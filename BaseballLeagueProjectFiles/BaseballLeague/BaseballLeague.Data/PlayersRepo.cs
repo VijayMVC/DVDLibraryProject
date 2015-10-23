@@ -7,6 +7,7 @@ using BaseballLeague.Models;
 using System.Data.SqlClient;
 using BaseballLeague.Data.Config;
 using System.Data;
+using Dapper;
 
 namespace BaseballLeague.Data
 {
@@ -58,5 +59,15 @@ namespace BaseballLeague.Data
         {
             throw new NotImplementedException();
         }
+
+        public List<Position> GetPositions()
+        {
+            var results = new List<Position>();
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                results = cn.Query<Position>("SELECT * FROM Positions").ToList();
+            }
+            return results;
+        } 
     }
 }
