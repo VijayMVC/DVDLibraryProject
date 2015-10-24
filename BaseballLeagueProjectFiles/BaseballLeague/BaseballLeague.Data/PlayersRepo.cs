@@ -52,7 +52,14 @@ namespace BaseballLeague.Data
 
         public List<Player> GetPlayers(int teamId)
         {
-            throw new NotImplementedException();
+            var results = new List<Player>();
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var p = new DynamicParameters();
+                p.Add("TeamID", teamId);
+                results = cn.Query<Player>("SELECT * FROM Players where teamID = @TeamID", p).ToList();
+            }
+            return results;
         }
 
         public Player TradePlayer(int playerId, int teamId)

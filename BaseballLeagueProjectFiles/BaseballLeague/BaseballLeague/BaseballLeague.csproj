@@ -122,6 +122,7 @@
     <Compile Include="Models\AddPlayerSuccessVM.cs" />
     <Compile Include="Models\AddPlayerVM.cs" />
     <Compile Include="Models\AddTeamVM.cs" />
+    <Compile Include="Models\ListPlayersVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +140,8 @@
     <Content Include="Views\Player\AddPlayer.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Player\AddPlayerSuccess.cshtml" />
+    <Content Include="Views\Player\GetPlayersByTeam.cshtml" />
+    <Content Include="Views\Player\ListPlayers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
