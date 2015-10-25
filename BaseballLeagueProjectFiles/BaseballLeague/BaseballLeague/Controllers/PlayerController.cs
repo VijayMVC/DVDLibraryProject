@@ -15,18 +15,10 @@ namespace BaseballLeague.Controllers
         private IPlayerRepo _playerRepo;
         private ITeamRepo _teamRepo;
 
-        public PlayerController()
+        public PlayerController(IPlayerRepo playerRepo, ITeamRepo teamRepo)
         {
-            if (Mode == "DB")
-            {
-                _playerRepo = new PlayersRepo();
-                _teamRepo = new TeamRepo();
-            }
-            else
-            {
-                _playerRepo = new PlayerMockRepo();
-                
-            }
+            _playerRepo = playerRepo;
+            _teamRepo = teamRepo;
         }
 
         public ActionResult AddPlayer()
@@ -74,13 +66,8 @@ namespace BaseballLeague.Controllers
         [HttpPost]
         public ActionResult ListPlayers(ListPlayersVM vm)
         {
-            //var vm = new AddPlayerVM();
-
+            
             var results = _playerRepo.GetPlayers(vm.SelectedValue);
-
-            // vm.CreateTeamList(_teamRepo.GetTeams());
-            // vm.CreatePositionList(_playerRepo.GetPositions());
-
             ViewBag.Team = _playerRepo.GetTeamByID(vm.SelectedValue);
 
             return View(results);
