@@ -31,11 +31,17 @@ namespace BaseballLeague.Controllers
         public ActionResult AddTeam(AddTeamVM VM)
         {
             var repo = new TeamRepo();
-            int teamID = repo.AddTeam(VM.NewTeam);
 
-            repo.AddLeagueTeamDetails(teamID, 1);
 
-            return View("SuccessPage");
+            if (ModelState.IsValid)
+            {
+                int teamID = repo.AddTeam(VM.NewTeam);
+                repo.AddLeagueTeamDetails(teamID, 1);
+
+                return View("SuccessPage");
+            }
+
+            return View(VM);
         }
     }
 }

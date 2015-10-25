@@ -6,12 +6,19 @@
 {
     <div class="form-group">
         <label>Team Name</label>
+        <p style="color: red">@Html.ValidationMessageFor(m => m.NewTeam.TeamName)</p>
         @Html.TextBoxFor(m => m.NewTeam.TeamName, new { @class="form-control", @placeholder="Team Name Here"})
         <br />
         <label>Manager Name</label>
+        <p style="color: red">@Html.ValidationMessageFor(m => m.NewTeam.ManagerName)</p>
         @Html.TextBoxFor(m => m.NewTeam.ManagerName, new { @class = "form-control", @placeholder = "Manager Name Here"})
         <br />
     </div>
     <button class="btn btn-default">Submit</button>
 
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 }

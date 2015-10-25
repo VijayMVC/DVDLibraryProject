@@ -12,12 +12,15 @@ namespace BaseballLeague.Models
         public int PlayerID { get; set; }
 
         [Display(Name = "Name")]
+        [Required(ErrorMessage = "Please provide the player name...")]
         public string PlayerName { get; set; }
 
         [Display(Name = "Jersey Number")]
+        [RegularExpression(@"^[1-99]\d*$", ErrorMessage = "Please select a number other than zero for the player...")]
         public int JerseyNumber { get; set; }
 
         [Display(Name = "Position")]
+        [Required(ErrorMessage = "Please select the player's position...")]
         public int PositionID { get; set; }
 
         [Display(Name = "Previous Years Batting Average")]
