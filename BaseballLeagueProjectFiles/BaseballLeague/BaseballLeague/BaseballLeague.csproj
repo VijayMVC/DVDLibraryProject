@@ -162,6 +162,7 @@
     <Content Include="Views\Player\AddPlayerSuccess.cshtml" />
     <Content Include="Views\Player\GetPlayersByTeam.cshtml" />
     <Content Include="Views\Player\ListPlayers.cshtml" />
+    <Content Include="Views\Player\SuccessPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -72,5 +72,17 @@ namespace BaseballLeague.Controllers
 
             return View(results);
         }
+
+        public ActionResult Trade(int id)
+        {
+            return View();
+        }
+
+        public ActionResult Delete(int id)
+        {
+            _playerRepo.DeletePlayerFromTeam(id);
+
+            return View("SuccessPage");
+        }
     }
 }

@@ -47,7 +47,20 @@ namespace BaseballLeague.Data
 
         public void DeletePlayerFromTeam(int playerId)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(Settings.ConnectionString))
+            {
+                var command = new SqlCommand();
+                command.CommandText = "UPDATE Players" +
+                                       " SET TeamID = null" +
+                                        " WHERE Players.PlayerID = " + playerId;
+
+                command.Connection = connection;
+
+                connection.Open();
+
+                command.ExecuteNonQuery();
+
+            }
         }
 
         public List<Player> GetPlayers(int teamId)
