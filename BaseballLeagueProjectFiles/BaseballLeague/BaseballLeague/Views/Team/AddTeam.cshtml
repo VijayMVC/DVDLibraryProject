@@ -2,7 +2,7 @@
 
 <h2>Add A Team</h2>
 
-@using (Html.BeginForm("AddTeam", "Team", FormMethod.Post))
+@using (Html.BeginForm("AddTeam", "Team", FormMethod.Post, new {id = "addTeamForm"}))
 {
     <div class="form-group">
         <label>Team Name</label>
@@ -14,11 +14,14 @@
         @Html.TextBoxFor(m => m.NewTeam.ManagerName, new { @class = "form-control", @placeholder = "Manager Name Here"})
         <br />
     </div>
-    <button class="btn btn-default">Submit</button>
+    <button type="submit" class="btn btn-default">Submit</button>
 
 }
 
 @section Scripts
 {
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/app/jquery-validate-defaults.js"></script>
+    <script src="~/Scripts/app/addTeamValidation.js"></script>
 }

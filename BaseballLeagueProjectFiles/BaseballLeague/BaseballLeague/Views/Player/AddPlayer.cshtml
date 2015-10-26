@@ -7,13 +7,12 @@
 <h2>Add Player</h2>
 
 
-@using (Html.BeginForm("AddPlayer", "Player", FormMethod.Post)) 
+@using (Html.BeginForm("AddPlayer", "Player", FormMethod.Post, new {id = "addPlayerForm"})) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.PlayerToAdd.PlayerName, "Name", htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
@@ -33,7 +32,6 @@
             <div class="col-md-10">
                 <p style="color: red">@Html.ValidationMessageFor(m => m.PlayerToAdd.PositionID)</p>
                 @Html.DropDownListFor(model => model.PlayerToAdd.PositionID, Model.PositionSelectList, "-Select One-", htmlAttributes: new {@class = "control-label col-md-2"})
-                @*@Html.ValidationMessageFor(model => model.PositionSelectedValue, "", new {@class = "text-danger"})*@
             </div>
         </div>
         <div class="form-group">
@@ -64,9 +62,12 @@
     </div>
 }
 
-@section Scripts 
+@section Scripts
 {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/app/jquery-validate-defaults.js"></script>
+    <script src="~/Scripts/app/addPlayerValidation.js"></script>
 }
 
 
