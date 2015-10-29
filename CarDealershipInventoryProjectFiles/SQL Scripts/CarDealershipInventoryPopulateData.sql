@@ -1,6 +1,17 @@
 USE CarDealershipInventory
 GO
 
+
+CREATE TRIGGER RequestTrigger ON RequestForInfo
+FOR UPDATE 
+AS
+BEGIN
+DECLARE @RequestID int
+SELECT @RequestID = RequestID from inserted
+UPDATE RequestForInfo
+SET LastContactDate = getdate()
+WHERE @RequestID = RequestID
+END
 --ALTER TABLE RequestForInfo
 --ADD DEFAULT (CURRENT_TIMESTAMP) FOR LastContactDate
 
@@ -32,16 +43,7 @@ WHERE VehicleID = 1
 SELECT *
 FROM RequestForInfo
 
-CREATE TRIGGER RequestTrigger ON RequestForInfo
-FOR UPDATE 
-AS
-BEGIN
-DECLARE @RequestID int
-SELECT @RequestID = RequestID from inserted
-UPDATE RequestForInfo
-SET LastContactDate = getdate()
-WHERE @RequestID = RequestID
-END
+
 
 
 
