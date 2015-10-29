@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "ListAllCars";
+}
+
+<h2>Vehicle List</h2>
+
+<div class="row">
+    <table id="vehicle" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Mileage</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+
+@section scripts
+{
+    <script>
+        var uri = '/api/vehicle/';
+
+        $(document).ready(function () {
+            loadVehicles();
+        });
+            
+        function loadVehicles() {
+
+            $.getJSON(uri)
+                .done(function (data) {
+                    $('#vehicle tbody tr').remove();
+
+                    $.each(data, function (index, vehicle) {
+
+                        $(createRow(vehicle)).appendTo($('#vehicle tbody'));
+                    });
+                });
+        };
+
+        function createRow(vehicle) {
+            return '<tr><td>' + vehicle.Make + '</td><td>' +
+                vehicle.Model + '</td><td>' + vehicle.Year + '</td><td>' + vehicle.Mileage +
+                '</td><td>' + vehicle.AdTitle + '</td><td>' + vehicle.Description +
+                '</td><td>' + vehicle.Price + '</td></tr>';
+        }
+    </script>
+
+}

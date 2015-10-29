@@ -12,22 +12,22 @@ namespace CarDealership.Controllers
     {
         public List<RequestForInfo> GetAllRequests()
         {
-            
+            return null;
         }
 
         public RequestForInfo GetSingleRequest()
         {
-            
+            return null;
         }
 
         public HttpResponseMessage PostNewRequest(RequestForInfo r)
         {
-            
+            return null;
         }
 
         public HttpResponseMessage PutEditRequest(RequestForInfo r)
         {
-            
+            return null;
         }
     }
 }

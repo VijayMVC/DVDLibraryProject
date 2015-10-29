@@ -40,6 +40,7 @@ namespace DVDLibrary.Data
                 d.Add("InCollection", 1);
                 results = cn.Query<DVD>("SELECT * FROM DVDs WHERE Title LIKE '%' + @DVDTitle + '%' AND IsInCollection = @InCollection", d).ToList();
             }
+            
             return results;
         }
 
