@@ -12,22 +12,22 @@ namespace CarDealership.Controllers
     {
         public List<Vehicle> GetVehicleList()
         {
-            
+            return null;
         }
 
         public Vehicle GetSingleVehicle(int id)
         {
-            
+            return null;
         }
 
         public HttpResponseMessage PostAddVehicle(Vehicle v)
         {
-            
+            return null;
         }
 
         public HttpResponseMessage PutRemoveVehicle(int id)
         {
-            
+            return null;
         }
     }
 }

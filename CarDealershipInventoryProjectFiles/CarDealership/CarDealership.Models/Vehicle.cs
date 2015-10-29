@@ -12,7 +12,7 @@ namespace CarDealership.Models
         public string Make { get; set; }
         public string Model { get; set; }
         public DateTime Year { get; set; }
-        public int Milage { get; set; }
+        public int Mileage { get; set; }
         public string AdTitle { get; set; }
         public string Description { get; set; }
         public decimal? Price { get; set; }
