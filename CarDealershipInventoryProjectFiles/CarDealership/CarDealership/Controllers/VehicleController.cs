@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using CarDealership.Models;
+using CarDealership.Data;
 
 namespace CarDealership.Controllers
 {
@@ -12,7 +13,9 @@ namespace CarDealership.Controllers
     {
         public List<Vehicle> GetVehicleList()
         {
-            return null;
+            var repo = new VehicleRepo();
+            var results = repo.GetAll();
+            return results;
         }
 
         public Vehicle GetSingleVehicle(int id)

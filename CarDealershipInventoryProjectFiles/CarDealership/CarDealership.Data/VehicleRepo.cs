@@ -48,7 +48,7 @@ namespace CarDealership.Data
                 command.Parameters.Add(new SqlParameter("AdTitle", vehicle.AdTitle));
                 command.Parameters.Add(new SqlParameter("Description", vehicle.Description));
                 command.Parameters.Add(new SqlParameter("Make", vehicle.Make));
-                command.Parameters.Add(new SqlParameter("Milage", vehicle.Milage));
+                command.Parameters.Add(new SqlParameter("Milage", vehicle.Mileage));
                 command.Parameters.Add(new SqlParameter("IsAvailable", available));
                 command.Parameters.Add(new SqlParameter("Price", vehicle.Price));
                 command.Parameters.Add(new SqlParameter("UrlPicture", vehicle.UrlPicture));

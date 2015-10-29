@@ -17,7 +17,7 @@ namespace CarDealership.Data.Config
             {
                 if (string.IsNullOrEmpty(_connectionString))
                 {
-                    _connectionString = ConfigurationManager.ConnectionStrings["CarDearlershipInventory"].ConnectionString;
+                    _connectionString = ConfigurationManager.ConnectionStrings["CarDealershipInventory"].ConnectionString;
                 }
 
                 return _connectionString;
